@@ -1,2 +1,2 @@
 # TheNewsApp
-This is an depo app
+This is a demo app
