@@ -11,4 +11,10 @@ struct Article: Decodable {
     var source: NewsSource?
     var title: String?
     var urlToImage: String?
+    var author: String?
+    var description: String?
+    var url: String?
+    var publishedAt: String?
+    var content: String?
+    
 }

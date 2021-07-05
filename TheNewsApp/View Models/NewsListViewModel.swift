@@ -9,6 +9,7 @@ import Foundation
 
 class NewsListViewModel: NewsListViewModeling {
     
+    private var data: NewsListResponse?
     private(set) var newsList: [NewsItemViewModeling] = []
     private(set) var service: NewsServiceProtocol
     private(set) weak var delegate: NewsListViewDelegate?
@@ -70,6 +71,7 @@ class NewsListViewModel: NewsListViewModeling {
             guard let self = self else { return }
             switch result {
             case .success(let data):
+                self.data = data
                 self.totalResults = data.totalResults
                 let articles = data.articles.map {NewsItemViewModel(model: $0) }
                 self.newsList.append(contentsOf: articles)
@@ -84,6 +86,13 @@ class NewsListViewModel: NewsListViewModeling {
             }
             self.isFetchingData = false
         }
+    }
+    
+    func detailsItemAt(_ index: Int) -> NewsDetailsViewModeling? {
+        guard let article = data?.articles[index] else {
+            return nil
+        }
+        return NewsDetailsViewModel(model: article)
     }
     
 }
