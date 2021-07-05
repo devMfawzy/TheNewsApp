@@ -23,4 +23,12 @@ extension NewsListViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let newsItem = viewModel.detailsItemAt(indexPath.row) else {
+            return
+        }
+        let newsItemDetailsViewController = NewsItemDetailsViewController(viewModel: newsItem)
+        self.navigationController?.pushViewController(newsItemDetailsViewController, animated: true)
+    }
+    
 }

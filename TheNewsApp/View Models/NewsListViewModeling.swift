@@ -18,6 +18,7 @@ protocol NewsListViewModeling {
     var totalResults: Int? { get }
     var moreToFetch: Bool { get }
     var emptyResultMessage: String { get }
+    func detailsItemAt(_ index: Int) -> NewsDetailsViewModeling?
     func fetchNews(query: String)
     func loadMoreNews()
 }
